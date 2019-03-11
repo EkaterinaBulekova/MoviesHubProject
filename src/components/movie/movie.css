@@ -1,4 +1,32 @@
+.movie-info{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: unset;
+    flex-shrink: unset;
+}
+
 .movie-title{
+    margin: 1%;
+    flex: 0 1 80%;
     font-weight: bold;
     font-size: 150%;
+}
+
+.movie-release-date{
+    margin:1%;
+    flex: 0 1 14%;
+    text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.movie-release-date p{
+    border: 2 black;
+    border-style: solid;
+}
+
+.movie-genres{
+    margin: 1%;
+    flex: 0 1 80%;
 }
