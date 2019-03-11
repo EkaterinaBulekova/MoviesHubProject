@@ -1,9 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 
 module.exports = {
 
-    entry: './src/main.js',
+    entry: './src/index.js',
 
     output: {
       filename: 'bundle.js'
@@ -11,7 +12,17 @@ module.exports = {
 
     module: {
       rules: [
-        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
+            test: /\.css$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader"]
+        }
       ]
     },
     
@@ -20,10 +31,17 @@ module.exports = {
     },
 
     plugins: [
-      new HtmlWebpackPlugin({template: './src/index.html'}),
+      new HtmlWebpackPlugin({
+        template: "./src/index.html"
+      }),
+      new MiniCssExtractPlugin({
+        template: "./src/index.html",
+        filename: "[name].css",
+        chunkFilename: "[id].css"
+      }),
       new webpack.HotModuleReplacementPlugin()
     ],
-    
+
     devServer: {
       contentBase: './dist',
       hot: true

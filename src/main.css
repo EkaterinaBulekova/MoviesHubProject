@@ -1,0 +1,10 @@
+@import "./components/app/app.css";
+@import "./components/page/page.css";
+@import "./components/footer/footer.css";
+@import "./components/header/header.css";
+@import "./components/message/message.css";
+
+* {
+    padding: 0;
+    margin: 0;
+}
