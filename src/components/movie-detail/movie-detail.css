@@ -1,0 +1,25 @@
+.movie-detail{
+  flex: 0 1 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-detail-img-box{
+  flex: 0 1 30%;
+  margin: 1em;
+}
+
+.movie-detail-img{
+  max-width: 100%;
+  min-width: 20em;
+}
+
+.movie-detail-info{
+  flex: 0 1 60%;
+  margin: 1em;
+}
+
+.movie-detail-title{
+  font-size: 200%;
+  font-weight: bold;
+}

@@ -6,6 +6,12 @@
     flex-shrink: unset;
 }
 
+.movie-img{
+    max-width: 100%;
+    min-width: 20em;
+    margin-bottom: 1em;
+}
+
 .movie-title{
     margin: 1%;
     flex: 0 1 80%;
@@ -13,7 +19,7 @@
     font-size: 150%;
 }
 
-.movie-release-date{
+.movie-release-box{
     margin:1%;
     flex: 0 1 14%;
     text-align: center;
@@ -21,7 +27,7 @@
     font-weight: bold;
 }
 
-.movie-release-date p{
+.movie-release-date{
     border: 2 black;
     border-style: solid;
 }

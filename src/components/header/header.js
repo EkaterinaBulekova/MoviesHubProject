@@ -1,12 +1,13 @@
 import React from "react"
 
-export class AppHeader extends React.PureComponent{
-    render() {
-        return (
-          <div className="app-header">
-            <div className="header-name">
-                {this.props.name}
-            </div>
-          </div>)
-    }
+export class Header extends React.PureComponent{
+  render() {
+    return (
+    <div className="app-header">
+      <div className="header-name">
+        {this.props.name}
+      </div>
+      {this.props.innerComponent}
+    </div>)
+  }
 }

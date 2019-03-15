@@ -21,7 +21,11 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, "css-loader"]
+            use: [
+              "css-hot-loader",
+              MiniCssExtractPlugin.loader,
+              "css-loader"
+            ]
         }
       ]
     },
@@ -36,8 +40,7 @@ module.exports = {
       }),
       new MiniCssExtractPlugin({
         template: "./src/index.html",
-        filename: "[name].css",
-        chunkFilename: "[id].css"
+        filename: "main.css"
       }),
       new webpack.HotModuleReplacementPlugin()
     ],
