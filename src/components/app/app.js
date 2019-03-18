@@ -4,7 +4,11 @@ import {Page} from "../page/page";
 import {AppFooter} from "../footer/footer.js"
 
 const App = () => {
-  var appName = "netflixroulette"
+  if (process.env.NODE_ENV =='development'){
+    console.log('App is started');
+  }
+
+  var appName = "netflixroulette";
   return (
     <div className="App">
       <Page name={appName}></Page>

@@ -19,6 +19,12 @@ export class Page extends React.Component {
     };
   }
 
+  componentDidMount(){
+    if (process.env.NODE_ENV =='development'){
+      console.log('Page is created');
+    }  
+  }
+
   initState(){
     this.setState({
       movies: [],
