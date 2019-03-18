@@ -3,15 +3,17 @@
     flex-wrap: wrap;
     width: 100%;
     margin: 0;
-    padding: 1em 5%;
     border: 0;
     font-size: 100%;
-    vertical-align: baseline;
-    background-color: #222020;
+    background-image:url("../../../images/NetflixHeaderBackground.png");
+    background-size: 100% 100%;
+    background-color: rgb(58, 56, 56);
+    background-blend-mode: overlay;
     color: #ce5d6e;
 }
 .header-name{
-    flex: 0 1 85%;
+    flex: 0 1 70%;
     min-height: 3em;
     font-weight: bold;
+    margin: 1em 0 1em 5%;
 }

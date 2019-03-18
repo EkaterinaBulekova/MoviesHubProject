@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
+const path = require("path");
 
 module.exports = {
 
@@ -19,13 +20,17 @@ module.exports = {
             loader: "babel-loader"
           }
         },
+        { 
+          test: /\.(png|jpg)$/,
+          loader: 'file-loader?name=[path][name].[ext]'
+        },
         {
-            test: /\.css$/,
-            use: [
-              "css-hot-loader",
-              MiniCssExtractPlugin.loader,
-              "css-loader"
-            ]
+          test: /\.css$/,
+          use: [
+            "css-hot-loader",
+            MiniCssExtractPlugin.loader,
+            "css-loader"
+          ]
         }
       ]
     },

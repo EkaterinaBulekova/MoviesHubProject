@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   flex: 0 1 90%;
+  margin: 1em 5% 1em 5%;
 }
 
 .search-button.active{
@@ -12,13 +13,17 @@
   max-height: 3em;
   color: white;
   font-size: 120%;
+  margin: 1em 0;
   background-color: #ce5d6e;
 }
 
 .search-button{
-  flex: 0 1 15%;
+  flex: 0 1 25%;
+  margin: 1em 5%;
   max-width: 7em;
   max-height: 3em;
+  min-width: 7em;
+  min-height: 3em;
   color:#ce5d6e;
   font-size: 120%;
   background-color: white;
@@ -32,6 +37,7 @@
   flex-wrap: wrap;
   flex: 0 1 85%;
   height: 3em;
+  margin: 1em 0 2em;
 }
 
 .search-filter-title{
@@ -79,3 +85,4 @@
   border-radius: 3px;
   background-color: #070707;
 }
+

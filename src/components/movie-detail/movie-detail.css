@@ -2,6 +2,13 @@
   flex: 0 1 90%;
   display: flex;
   flex-wrap: wrap;
+  margin: 1em 5%;
+}
+
+.movie-detail-group{
+  flex: 0 1 auto;
+  display: flex;
+  margin: 1em 0;
 }
 
 .movie-detail-img-box{
@@ -16,10 +23,47 @@
 
 .movie-detail-info{
   flex: 0 1 60%;
+  min-width: 20em;
+  flex-direction: column;
   margin: 1em;
+  color: white;
+  display: flex;
 }
 
 .movie-detail-title{
+  flex: 0 1 80%;
   font-size: 200%;
   font-weight: bold;
+  color: #ce5d6e;
+}
+
+.movie-detail-rating{
+  flex: 0 1 3em;
+  text-align: center;
+  padding-top: 1em;
+  max-width: 3em;
+  max-height: 2em;
+  min-width: 3em;
+  min-height: 2em;
+  font-size: 120%;
+  border: 1px white;
+  border-style: solid;
+  border-radius: 1.5em;
+}
+
+.movie-detail-release-date{
+  flex: 0 1 7%;
+  font-size: 120%;
+  font-weight: bold;
+  margin: 0 1em 0 0;
+}
+
+.movie-detail-duration{
+  flex: 0 1 auto;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.movie-detail-description{
+  flex: 0 1 100%;
 }

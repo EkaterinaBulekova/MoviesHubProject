@@ -1,7 +1,6 @@
 import React from "react";
 import Message from "../message/message";
 import {Header} from "../header/header";
-import {SubHeader} from "../subheader/subheader";
 import MovieList from "../movie-list/movie-list";
 import MovieDetail from "../movie-detail/movie-detail";
 import Button from "../button/button"
