@@ -12,10 +12,10 @@ const App = () => {
   var appName = "netflixroulette";
   return (
     <ErrorBoundary>
-      <div className="App">
-      <Page name={appName}></Page>
-      <AppFooter name={appName}></AppFooter>
-    </div>
+      <div className="app">
+        <Page name={appName}></Page>
+        <AppFooter name={appName}></AppFooter>
+      </div>
     </ErrorBoundary>
 
   );
