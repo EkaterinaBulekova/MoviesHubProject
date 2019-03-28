@@ -6,8 +6,15 @@
     flex-shrink: unset;
 }
 
+.movie-card{
+    flex: 0 1 90%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .movie-img{
-    max-width: 100%;
+    flex: 0 1 90%;
+    max-width: 90%;
     min-width: 20em;
     margin-bottom: 1em;
 }
@@ -28,7 +35,7 @@
 }
 
 .movie-release-date{
-    border: 2 black;
+    border: 2 #4e4848;
     border-style: solid;
 }
 

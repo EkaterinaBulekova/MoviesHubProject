@@ -2,12 +2,14 @@
 @import "./components/page/page.css";
 @import "./components/footer/footer.css";
 @import "./components/header/header.css";
-@import "./components/subheader/subheader.css";
 @import "./components/message/message.css";
 @import "./components/movie/movie.css";
 @import "./components/movie-detail/movie-detail.css";
 @import "./components/search/search.css";
 @import "./components/movie-list/movie-list.css";
+@import "./components/films-by-genre/film-by-genre.css";
+@import "./components/films-results/films-results.css";
+@import "./components/error-boundary/error-boundary.css";
 
 * {
     padding: 0;

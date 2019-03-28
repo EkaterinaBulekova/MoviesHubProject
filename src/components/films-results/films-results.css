@@ -1,0 +1,39 @@
+.films-results{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1em 0;
+  background-color:#f5f3f3;
+  color: #383333;
+  font-weight: bold;
+}
+.films-count{
+  margin: 0 5% 0 5%;
+  flex: 0 1 35%;
+}
+
+.films-sortby{
+  margin: 0 5% 0 15%;
+  flex: 0 1 35%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.films-sortby-button{
+  font-weight: bold;
+  font-size: 100%;
+  flex: 0 1 30%;
+  border: 0;
+  background-color: transparent;
+  color: #4e4848;
+}
+
+.films-sortby-button.active{
+  flex: 0 1 30%;
+  border: 0;
+  color: #ce5d6e;
+}
+
+.films-sortby-title{
+  flex: 0 1 30%;
+}

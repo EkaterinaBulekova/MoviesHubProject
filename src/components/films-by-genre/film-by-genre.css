@@ -1,0 +1,11 @@
+.films-by-genre{
+    width: 100%;
+    padding: 1em 0;
+    background-color: #f5f3f3;
+    color: #4e4848;
+    font-weight: bold;
+}
+
+.films-by-genre-text{
+    margin: 0 5%;
+}

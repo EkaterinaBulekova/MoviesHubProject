@@ -12,7 +12,6 @@
   max-width: 15em;
   max-height: 3em;
   color: white;
-  font-size: 120%;
   margin: 1em 0;
   background-color: #ce5d6e;
 }
@@ -25,7 +24,7 @@
   min-width: 7em;
   min-height: 3em;
   color:#ce5d6e;
-  font-size: 120%;
+  font-size: 100%;
   background-color: white;
   border: 0;
   border-radius: 3px;
@@ -34,7 +33,7 @@
 
 .search-filter{
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex: 0 1 85%;
   height: 3em;
   margin: 1em 0 2em;
@@ -51,13 +50,14 @@
 
 .search-filter-button{
   flex: 0 1 auto;
-  color: white;
+  height: 2em; 
   font-size: 100%;
   font-weight: bold;
-  border: 0;
-  margin: 0.5em 0 1em 1em;
-  border-radius: 3px;
   padding: 0.5em 2em;
+  margin: 0.5em 0 1em 1em;
+  border: 0;
+  border-radius: 3px;
+  color: white;
   background-color: #383333;
 }
 
@@ -69,7 +69,7 @@
 .search-field-title{
   width: 100%;
   height: 2em;
-  font-size: 150%;
+  font-size: 120%;
 }
 
 .search-field-input{

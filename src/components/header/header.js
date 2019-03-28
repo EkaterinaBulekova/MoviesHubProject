@@ -7,7 +7,7 @@ export class Header extends React.PureComponent{
       <div className="header-name">
         {this.props.name}
       </div>
-      {this.props.innerComponent}
+      {this.props.children}
     </div>)
   }
 }

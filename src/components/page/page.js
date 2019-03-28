@@ -1,112 +1,88 @@
 import React from "react";
-import Message from "../message/message";
-import {Header} from "../header/header";
-import MovieList from "../movie-list/movie-list";
+import { Header } from "../header/header";
 import MovieDetail from "../movie-detail/movie-detail";
-import Button from "../button/button"
-import Search from "../search/search"
+import Button from "../button/button";
+import Search from "../search/search";
+import { MoviesContainer } from "../movies-container/movies-container";
+import { ErrorBoundary } from "../error-boundary/error-boundary";
+import FilmsByGenre from '../films-by-genre/films-by-genre';
+import FilmsResults from '../films-results/films-results';
+import getData from '../../utils/data-provider';
 
 export class Page extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: [],
       searchBy: "title",
       search: "",
       sortBy: "release_date",
-      selectedMovie: null
+      selectedMovie: null,
+      count: 0
     };
   }
 
   componentDidMount(){
     if (process.env.NODE_ENV =='development'){
       console.log('Page is created');
-    }  
+    }
   }
 
   initState(){
     this.setState({
-      movies: [],
       searchBy: "title",
       search: "",
       sortBy: "release_date",
-      selectedMovie: null
+      selectedMovie: null,
+      count: 0
     })
   }
 
   handleSearchClick(data){
     if (data.search){
-      this.getData({
+      this.setState({
         searchBy: data.searchBy,
-        search: data.search,
-        sortBy: this.state.sortBy,
-        selectedMovie: null
+        search: data.search
       });
-    }
+    } 
+    else
+      this.initState();
   }
 
   handleMovieClick(movie){
-    this.getData({
-      searchBy:"genres",
+    this.setState({
+      searchBy: "genres",
       search: movie.genres,
-      sortBy: "release_date",
-      selectedMovie: movie
+      selectedMovie: movie,
     });
   }
 
-  getQueryUrl(data){
-    let resultUrl = "http://react-cdp-api.herokuapp.com/movies?";
-    let filter = "filter=";
-    if(data.searchBy === 'genres' && Array.isArray(data.search) && data.search.length > 1){
-      data.search.map((value, index) => resultUrl += (index) ? ('&' + filter + value) : (filter + value));
-    }else{
-      let search = "search=" + data.search;
-      let searchBy = "searchBy=" + data.searchBy;
-      resultUrl += search + '&' + searchBy;
-    }
-    let sortBy = "sortBy=" + data.sortBy;
-    let sortOrder = 'sortOrder=desc';
-    resultUrl += '&' + sortBy + '&' + sortOrder;
-    return resultUrl;
-  }
-
-  getData(newState){
-    fetch(this.getQueryUrl(newState))
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            movies: result.data, 
-            searchBy:newState.searchBy,
-            search: newState.search,
-            sortBy: newState.sortBy,
-            selectedMovie: newState.selectedMovie
-          });
-        },
-        (error) => {this.initState(error);}
-      )
+  handleSortByClick(sortBy){
+    this.setState({
+      sortBy: sortBy
+    });
   }
 
   render() {
     let selectedMovie = this.state.selectedMovie;
-    let movies = this.state.movies;
-    let headerComponent = (selectedMovie)
-      ? <React.Fragment>
+    let filter = {search: this.state.search, searchBy: this.state.searchBy, sortBy: this.state.sortBy}
+    let header = (selectedMovie)
+      ? <Header name={this.props.name}>
           <Button className="search-button" name="SEARCH" onClick={() => this.initState()}/>
           <MovieDetail movie={selectedMovie}/>
-        </React.Fragment>
-      : <Search onSearchClick={(value) => this.handleSearchClick(value)}/>;
+          <FilmsByGenre genres={selectedMovie.genres}/>
+        </Header>
+      : <Header name={this.props.name}>
+          <Search onSearchClick={(value) => this.handleSearchClick(value)}/>
+          <FilmsResults count={this.state.count} sortBy={this.state.sortBy} onClick={(value)=>this.handleSortByClick(value)}/>
+        </Header>;
 
     return (
       <div className="page">
-        <Header name={this.props.name} innerComponent={headerComponent}/>
-        <MovieList 
-          movies={movies} 
-          excMovie={selectedMovie} 
-          onMovieClick={(movie) => this.handleMovieClick(movie)}
-        />
-        {this.state.movies.length === 0 && this.state.search ? <Message text="No films found"/>:""}
+        {header}
+        <ErrorBoundary className="global-error">
+          <MoviesContainer filter={filter} getData={getData} onClick={(movie) => this.handleMovieClick(movie)} onUpdate={(count)=>this.setState({count: count})}></MoviesContainer>
+        </ErrorBoundary>
       </div>
     );
   }

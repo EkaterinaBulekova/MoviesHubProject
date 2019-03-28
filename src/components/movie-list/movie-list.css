@@ -3,11 +3,11 @@
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    margin-left: 1%;
+    color:  #4e4848;
 }
 
 .movie-list-element {
     cursor: pointer;
-    flex: 0 1 27%;
-    margin: 3%;
+    flex: 0 1 25%;
+    margin: 4%;
 }
