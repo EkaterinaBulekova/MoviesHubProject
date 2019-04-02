@@ -11,6 +11,14 @@ export class MoviesContainer extends React.Component {
     };
   }
 
+  componentDidMount(){
+    (this.props.filter.search)
+    ? this.props.getData(this.props.filter)
+        .then(result => this.setState({loaded: true, movies: result.data}))
+        .then(()=>this.props.onUpdate(this.state.movies.length))
+    : this.setState({loaded: false, movies: []});
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     if (nextProps.filter.search !== this.props.filter.search ||
       nextProps.filter.searchBy !== this.props.filter.searchBy ||

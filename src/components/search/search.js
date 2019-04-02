@@ -12,11 +12,15 @@ class Search extends React.PureComponent {
     }
   }
 
+  changeValue(value) {
+    this.setState({search: value})
+  }
+
   render() {
     let startSearch = this.props.onSearchClick;
     return (
       <div className="search-component" >
-        <CustomInput className="search-field" title="FIND YOUR MOVIE" onChange={value => this.setState({search: value})} onEnter={(isEnter) => isEnter&&startSearch(this.state)}></CustomInput>
+        <CustomInput className="search-field" title="FIND YOUR MOVIE" onChange={value=>this.changeValue(value)} onEnter={(isEnter) => isEnter&&startSearch(this.state)}></CustomInput>
         <SearchFilter searchBy={this.state.searchBy} onClick={(value)=> this.setState({searchBy: value})}></SearchFilter>
         <Button className="search-button active" name="SEARCH" onClick={() => startSearch(this.state)}></Button>
       </div>

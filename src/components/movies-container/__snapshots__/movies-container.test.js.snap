@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MoviesContainer /> should render list of movie card with right title, class and metod 1`] = `
+<MoviesContainer
+  filter={
+    Object {
+      "search": "value",
+      "searchBy": "title",
+      "sortBy": "rating",
+    }
+  }
+  getData={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "search": "value",
+            "searchBy": "title",
+            "sortBy": "rating",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": Promise {},
+        },
+      ],
+    }
+  }
+  onClick={[MockFunction]}
+  onUpdate={[MockFunction]}
+/>
+`;

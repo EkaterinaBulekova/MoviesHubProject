@@ -66,20 +66,21 @@ export class Page extends React.Component {
   render() {
     let selectedMovie = this.state.selectedMovie;
     let filter = {search: this.state.search, searchBy: this.state.searchBy, sortBy: this.state.sortBy}
-    let header = (selectedMovie)
-      ? <Header name={this.props.name}>
-          <Button className="search-button" name="SEARCH" onClick={() => this.initState()}/>
-          <MovieDetail movie={selectedMovie}/>
-          <FilmsByGenre genres={selectedMovie.genres}/>
-        </Header>
-      : <Header name={this.props.name}>
-          <Search onSearchClick={(value) => this.handleSearchClick(value)}/>
-          <FilmsResults count={this.state.count} sortBy={this.state.sortBy} onClick={(value)=>this.handleSortByClick(value)}/>
-        </Header>;
 
     return (
       <div className="page">
-        {header}
+        {<ErrorBoundary className="global-error">
+          {(selectedMovie)
+          ? <Header name={this.props.name}>
+              <Button className="search-button" name="SEARCH" onClick={() => this.initState()}/>
+              <MovieDetail movie={selectedMovie}/>
+              <FilmsByGenre genres={selectedMovie.genres}/>
+            </Header>
+          : <Header name={this.props.name}>
+              <Search onSearchClick={(value) => this.handleSearchClick(value)}/>
+              <FilmsResults count={this.state.count} sortBy={this.state.sortBy} onClick={(value)=>this.handleSortByClick(value)}/>
+            </Header>}
+        </ErrorBoundary>}
         <ErrorBoundary className="global-error">
           <MoviesContainer filter={filter} getData={getData} onClick={(movie) => this.handleMovieClick(movie)} onUpdate={(count)=>this.setState({count: count})}></MoviesContainer>
         </ErrorBoundary>
