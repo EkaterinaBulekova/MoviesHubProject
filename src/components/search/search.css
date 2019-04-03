@@ -33,7 +33,6 @@
 
 .search-filter{
   display: flex;
-  /* flex-wrap: wrap; */
   flex: 0 1 85%;
   height: 3em;
   margin: 1em 0 2em;
