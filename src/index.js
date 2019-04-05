@@ -1,7 +1,9 @@
-import "./main.css";
+import style from "./main.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import {App} from "./components/app/app.js";
+import { App } from "./components/app/app";
 
-module.hot.accept();
-ReactDOM.render(<App />, document.getElementById("app"));
+
+if (module.hot)
+    module.hot.accept();
+ReactDOM.render(<App name="netflixroulette"/>, document.getElementById("app"));

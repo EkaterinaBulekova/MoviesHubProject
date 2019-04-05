@@ -5,10 +5,17 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "jest",
+<<<<<<< HEAD
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
+=======
+    "start": "webpack-dev-server --open",
+    "build": "webpack --progress --profile --colors",
+    "build:dev": "webpack --env dev --progress --profile --colors",
+    "build:prod": "webpack --env prod --progress --profile --colors"
+>>>>>>> master
   },
   "jest": {
     "snapshotSerializers": [
@@ -45,6 +52,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
