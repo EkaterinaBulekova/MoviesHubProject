@@ -1,25 +1,45 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import {Page} from "../page/page";
 import {AppFooter} from "../footer/footer.js"
-import { ErrorBoundary } from "../error-boundary/error-boundary";
+import {MoviePage} from "../movie-page/movie-page.js";
+import {SearchPage} from "../search-page/search-page.js";
+import getData from "../../utils/data-provider";
 
-const App = () => {
-  if (process.env.NODE_ENV =='development'){
-    console.log('App is started');
+export class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedMovie: null,
+    };
   }
 
-  var appName = "netflixroulette";
-  return (
-    <ErrorBoundary>
+  componentDidMount(){
+    if (process.env.NODE_ENV =='development'){
+      console.log('App is created');
+    }
+  }
+
+  initState = () => {
+    this.setState({
+      selectedMovie: null,
+    })
+  }
+
+  onMovieClick = (movie) => () =>{
+    this.setState({
+      selectedMovie: movie,
+    })
+  }
+
+  render() {
+    const selectedMovie = this.state.selectedMovie;
+    const appName = this.props.name;
+    return (
       <div className="App">
-      <Page name={appName}></Page>
-      <AppFooter name={appName}></AppFooter>
-    </div>
-    </ErrorBoundary>
-
-  );
+        {selectedMovie
+          ? <MoviePage name={appName} movie={selectedMovie} getData={getData} onReturn={this.initState}/>
+          : <SearchPage name={appName} getData={getData} onReturn={this.onMovieClick}/>}
+        <AppFooter name={appName}/>
+      </div>
+    );
+  }
 }
-export default App;
-
-ReactDOM.render(<App />, document.getElementById("app"));
