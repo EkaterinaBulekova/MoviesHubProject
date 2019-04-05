@@ -2,7 +2,7 @@ import React from 'react'
 import ButtonsGroup from '../buttons-group/buttons-group';
 
 export default function SearchFilter({searchBy, onClick}) {
-  var group = {
+  const group = {
     className: "search-filter",
     title: "SEARCH BY",
     buttons: [

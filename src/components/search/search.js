@@ -3,25 +3,30 @@ import Button from "../button/button";
 import SearchFilter from "../search-filter/search-filter";
 import CustomInput from "../custom-input/custom-input";
 
-class Search extends React.PureComponent {
+export default class Search extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       searchBy: "title",
-      search: ""
     }
   }
 
+  onSearchByClick = (searchBy) => () => {
+    this.setState({searchBy: searchBy});
+  }
+
+  onSubmit =(e) => {
+    e.preventDefault();
+    this.props.onSearchClick({search: e.target[0].value, searchBy: this.state.searchBy});
+  }
+
   render() {
-    let startSearch = this.props.onSearchClick;
     return (
-      <div className="search-component" >
-        <CustomInput className="search-field" title="FIND YOUR MOVIE" onChange={value => this.setState({search: value})} onEnter={(isEnter) => isEnter&&startSearch(this.state)}></CustomInput>
-        <SearchFilter searchBy={this.state.searchBy} onClick={(value)=> this.setState({searchBy: value})}></SearchFilter>
-        <Button className="search-button active" name="SEARCH" onClick={() => startSearch(this.state)}></Button>
-      </div>
+      <form  className="search-component" onSubmit={this.onSubmit}>
+        <CustomInput className="search-field" title="FIND YOUR MOVIE"/>
+        <SearchFilter searchBy={this.state.searchBy} onClick={this.onSearchByClick}/>
+        <Button className="search-button active" type="submit" name="SEARCH"/>
+      </form>
     )
   }
 }
-
-export default Search
