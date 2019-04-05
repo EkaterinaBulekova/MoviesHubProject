@@ -42,7 +42,6 @@ export class MoviePage extends React.Component{
 
   render(){
     const {movie, movies} = this.state;
-    console.log('render '+ movie.genres);
     return (
       <div className="page">
         <Header name={this.props.name}>
