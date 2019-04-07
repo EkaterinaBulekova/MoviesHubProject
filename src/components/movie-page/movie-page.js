@@ -15,29 +15,18 @@ export class MoviePage extends React.Component{
     };
   }
 
-  getFilter(genres){
-    return {
-      searchBy: "genres",
-      search: genres,
-      sortBy: "release_date"};
-  }
-
   componentDidMount(){
-    this.props.getData(this.getFilter(this.state.movie.genres))
-    .then(result => this.setState({movies: result.data}))
+    this.getMoviesByGenre(this.props.movie);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.movie.id !== this.state.movie.id){
-      this.props.getData(this.getFilter(nextState.movie.genres))
-      .then(result => this.setState({movies: result.data}))
-      return false;
-    }
-    return true;
+  getMoviesByGenre(movie){
+    console.log(movie);
+    return this.props.getData({search:movie.genres, searchBy:'genres', sortBy:'release_date'})
+      .then(result => this.setState({movie: movie, movies: result.data}));
   }
 
   onMovieClick = (movie) =>()=>{
-    this.setState({movie: movie});
+    (movie.id !== this.state.movie.id) && this.getMoviesByGenre(movie);
   }
 
   render(){

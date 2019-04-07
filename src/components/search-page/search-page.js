@@ -10,7 +10,6 @@ export class SearchPage extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       searchBy: 'title',
       search: '',
       sortBy: 'release_date',
@@ -18,32 +17,21 @@ export class SearchPage extends React.Component{
     };
   }
 
-  getFilter(state){
-    return {
-      searchBy: state.searchBy,
-      search: state.search,
-      sortBy: state.sortBy,
-    };
+  performSearch(search, searchBy, sortBy){
+    return this.props.getData({search: search, searchBy: searchBy, sortBy: sortBy})
+    .then(result => this.setState({search: search, searchBy: searchBy, sortBy: sortBy, movies: result.data}))
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.loading){
-      nextState.search 
-        ? this.props.getData(this.getFilter(nextState))
-          .then(result => this.setState({movies: result.data, loading: false}))
-        : this.setState({movies: [], loading: false})
-      return false;
-    }
-    return true;
-  }
-
-  onSearchClick = (filter) =>{
-    (filter.search !== this.state.search||filter.searchBy!==this.state.searchBy)
-     && this.setState({search: filter.search, searchBy: filter.searchBy, loading: true});
+  onSearchClick = ({search, searchBy}) =>{
+    if(search !== this.state.search || searchBy !== this.state.searchBy)
+      (search !=='')
+        ? this.performSearch(search, searchBy, this.state.sortBy)
+        : this.setState({search: search, movies: []});
   }
 
   onSortByClick = (sortBy) =>()=>{
-    sortBy !== this.props.sortBy && this.setState({sortBy: sortBy, loading: true});
+    sortBy !== this.props.sortBy 
+    && this.performSearch(this.state.search, this.state.searchBy, sortBy);
   }
 
   render(){
