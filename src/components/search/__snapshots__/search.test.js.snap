@@ -4,13 +4,12 @@ exports[`<Search /> should render as expect 1`] = `
 <Search
   onSearchClick={[MockFunction]}
 >
-  <div
+  <form
     className="search-component"
+    onSubmit={[Function]}
   >
     <CustomInput
       className="search-field"
-      onChange={[Function]}
-      onEnter={[Function]}
       title="FIND YOUR MOVIE"
     >
       <div
@@ -23,8 +22,6 @@ exports[`<Search /> should render as expect 1`] = `
         </div>
         <input
           className="search-field-input"
-          onChange={[Function]}
-          onKeyUp={[Function]}
         />
       </div>
     </CustomInput>
@@ -70,6 +67,7 @@ exports[`<Search /> should render as expect 1`] = `
               className="btn search-filter-button active"
               name="TITLE"
               onClick={[Function]}
+              type="button"
             >
               TITLE
             </button>
@@ -84,6 +82,7 @@ exports[`<Search /> should render as expect 1`] = `
               className="btn search-filter-button"
               name="GENRE"
               onClick={[Function]}
+              type="button"
             >
               GENRE
             </button>
@@ -94,16 +93,16 @@ exports[`<Search /> should render as expect 1`] = `
     <Button
       className="search-button active"
       name="SEARCH"
-      onClick={[Function]}
+      type="submit"
     >
       <button
         className="btn search-button active"
         name="SEARCH"
-        onClick={[Function]}
+        type="submit"
       >
         SEARCH
       </button>
     </Button>
-  </div>
+  </form>
 </Search>
 `;

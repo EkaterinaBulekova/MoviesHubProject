@@ -10,8 +10,6 @@ describe('<Movie />', () => {
         release_date:"2019-01-05",
         genres: "test genre"
     };
-    const testClass=".movie-card"
-    const testOnClick = jest.fn();
     const component = shallow(<Movie movie={testMovie}/>);
 
     expect(component.find('.movie-title').text()).toBe(testMovie.title);
