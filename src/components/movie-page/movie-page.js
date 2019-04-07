@@ -25,7 +25,7 @@ export class MoviePage extends React.Component{
   }
 
   onMovieClick = (movie) =>()=>{
-    (nextState.movie.id !== this.state.movie.id) && this.getMoviesByGenre(movie);
+    (movie.id !== this.state.movie.id) && this.getMoviesByGenre(movie);
   }
 
   render(){
