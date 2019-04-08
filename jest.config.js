@@ -1,8 +1,6 @@
 module.exports = {
     clearMocks: true,
 
-    //collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
-
     coverageDirectory: 'coverage',
 
     moduleFileExtensions: ['js', 'json', 'jsx'],
@@ -11,13 +9,13 @@ module.exports = {
 
     testEnvironment: 'jsdom',
 
-    testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
+    testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(test).js?(x)'],
 
     testPathIgnorePatterns: ['\\\\node_modules\\\\'],
 
     testURL: 'http://localhost',
 
-    transformIgnorePatterns: ['<rootDir>/node_modules/'],
+    transformIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/cypress/'],
 
     verbose: false,
   };
