@@ -4,7 +4,7 @@ class Movie extends PureComponent {
   render() {
     const movie = this.props.movie;
     return (
-     <div className="movie-card" onClick = {this.props.onClick}>
+     <div className="movie-card"  onClick={this.props.onClick}>
         <img className="movie-img" src={movie.poster_path}></img>
         <div className="movie-info">
           <div className="movie-title">{movie.title}</div>

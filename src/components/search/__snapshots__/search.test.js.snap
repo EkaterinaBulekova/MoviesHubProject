@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> should render as expect 1`] = `
+<Search
+  onSearchClick={[MockFunction]}
+>
+  <form
+    className="search-component"
+    onSubmit={[Function]}
+  >
+    <CustomInput
+      className="search-field"
+      title="FIND YOUR MOVIE"
+    >
+      <div
+        className="search-field"
+      >
+        <div
+          className="search-field-title"
+        >
+          FIND YOUR MOVIE
+        </div>
+        <input
+          className="search-field-input"
+        />
+      </div>
+    </CustomInput>
+    <SearchFilter
+      onClick={[Function]}
+      searchBy="title"
+    >
+      <ButtonsGroup
+        active="title"
+        group={
+          Object {
+            "buttons": Array [
+              Object {
+                "name": "TITLE",
+                "result": "title",
+              },
+              Object {
+                "name": "GENRE",
+                "result": "genres",
+              },
+            ],
+            "className": "search-filter",
+            "title": "SEARCH BY",
+          }
+        }
+        onClick={[Function]}
+      >
+        <div
+          className="search-filter"
+        >
+          <div
+            className="search-filter-title"
+          >
+            SEARCH BY
+          </div>
+          <Button
+            className="search-filter-button active"
+            key="title"
+            name="TITLE"
+            onClick={[Function]}
+          >
+            <button
+              className="btn search-filter-button active"
+              name="TITLE"
+              onClick={[Function]}
+              type="button"
+            >
+              TITLE
+            </button>
+          </Button>
+          <Button
+            className="search-filter-button"
+            key="genres"
+            name="GENRE"
+            onClick={[Function]}
+          >
+            <button
+              className="btn search-filter-button"
+              name="GENRE"
+              onClick={[Function]}
+              type="button"
+            >
+              GENRE
+            </button>
+          </Button>
+        </div>
+      </ButtonsGroup>
+    </SearchFilter>
+    <Button
+      className="search-button active"
+      name="SEARCH"
+      type="submit"
+    >
+      <button
+        className="btn search-button active"
+        name="SEARCH"
+        type="submit"
+      >
+        SEARCH
+      </button>
+    </Button>
+  </form>
+</Search>
+`;
