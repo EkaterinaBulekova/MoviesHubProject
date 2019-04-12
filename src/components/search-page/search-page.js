@@ -1,53 +1,58 @@
 import React from "react";
-import { Header } from "../header/header";
+import {connect} from "react-redux";
+import Header from "../header/header";
 import Search from "../search/search";
 import { ErrorBoundary } from "../error-boundary/error-boundary";
 import FilmsResults from '../films-results/films-results';
 import MovieList from "../movie-list/movie-list";
 import Message from "../message/message";
+import { fetchFilteredMovies, setMovies } from '../../actions/insdex';
 
 export class SearchPage extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchBy: 'title',
-      search: '',
-      sortBy: 'release_date',
-      movies: []
-    };
+
+  componentDidMount(){
+    this.props.filter.search !== '' && this.props.startSearch(this.props.filter);
   }
 
-  performSearch(search, searchBy, sortBy){
-    return this.props.getData({search: search, searchBy: searchBy, sortBy: sortBy})
-    .then(result => this.setState({search: search, searchBy: searchBy, sortBy: sortBy, movies: result.data}))
-  }
-
-  onSearchClick = ({search, searchBy}) =>{
-    if(search !== this.state.search || searchBy !== this.state.searchBy)
-      (search !=='')
-        ? this.performSearch(search, searchBy, this.state.sortBy)
-        : this.setState({search: search, movies: []});
-  }
-
-  onSortByClick = (sortBy) =>()=>{
-    sortBy !== this.props.sortBy 
-    && this.performSearch(this.state.search, this.state.searchBy, sortBy);
+  shouldComponentUpdate(nextProps){
+    const {search, searchBy, sortBy} = this.props.filter;
+    if(nextProps.filter.search !== search ||nextProps.filter.searchBy !== searchBy ||nextProps.filter.sortBy !== sortBy){
+      nextProps.filter.search !== ''
+        ? this.props.startSearch(nextProps.filter)
+        : this.props.initMovies();
+      return !search && nextProps.filter.search || search && !nextProps.filter.search;
+    }
+    return true;
   }
 
   render(){
-    const {search, sortBy, movies} = this.state;
+    const {filter, hasMovies} = this.props;
     return (
       <div className="page">
-        <Header name={this.props.name}>
-          <Search onSearchClick={this.onSearchClick}/>
+        <Header>
+          <Search />
         </Header>
         <ErrorBoundary className="global-error">
-          <FilmsResults count={movies.length} sortBy={sortBy} onClick={this.onSortByClick}/>
-          {movies.length
-            ? <MovieList onClick={this.props.onReturn} movies={movies}/>
-            : search && <Message text="No films found"/>}
+          <FilmsResults/>
+          {hasMovies
+            ? <MovieList/>
+            : filter.search && <Message text="No films found"/>}
         </ErrorBoundary>
       </div>
     );
   }
 }
+
+function mapStateToProps(state){
+  const {filter, movies} = state;
+  return {filter: filter, hasMovies: movies.length};
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    startSearch: (filter) => dispatch(fetchFilteredMovies(filter)),
+    initMovies: () => dispatch(setMovies([]))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPage)

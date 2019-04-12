@@ -1,11 +1,19 @@
 import React from "react";
+import {connect} from "react-redux";
 
-export default function FilmsByGenre({genres}) {
+const FilmsByGenre = (props) => {
   return(
       <div className = "films-by-genre">
         <div className = "films-by-genre-text">
-          {"Films by " + genres + " genre"}
+          {"Films by " + props.genres + " genre"}
         </div>
       </div>
   );
 }
+
+function mapStateToProps(state){
+  const {movie} = state;
+  return {genres: movie.genres};
+}
+
+export default connect(mapStateToProps)(FilmsByGenre)

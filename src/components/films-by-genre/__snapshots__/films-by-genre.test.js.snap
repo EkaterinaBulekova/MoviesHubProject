@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchPage /> should render as expect 1`] = `
+exports[`<FilmsByGenre /> should render button with right name, class and onClick method 1`] = `
 <ContextConsumer>
   <Component />
 </ContextConsumer>

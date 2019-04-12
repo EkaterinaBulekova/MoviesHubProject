@@ -1,9 +1,14 @@
-import {combineRedusers} from 'redux';
+import {combineReducers} from 'redux';
 
 import movies from './movies-reducer';
+import movie from './movie-reducer';
 import filter from './filter-reducer';
 
-export default combineRedusers(
-    movies,
-    filter,
-)
+const rootReducer = combineReducers({
+  name: ()=>'netflixroulette',
+  movies: movies,
+  movie: movie,
+  filter: filter,
+});
+
+export default rootReducer;

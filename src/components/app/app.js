@@ -1,45 +1,23 @@
 import React from "react";
-import {AppFooter} from "../footer/footer.js"
-import {MoviePage} from "../movie-page/movie-page.js";
-import {SearchPage} from "../search-page/search-page.js";
-import getData from "../../utils/data-provider/data-provider";
+import {connect} from "react-redux";
+import AppFooter from "../footer/footer.js"
+import MoviePage from "../movie-page/movie-page.js";
+import SearchPage from "../search-page/search-page.js";
 
-export class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedMovie: null,
-    };
-  }
-
-  componentDidMount(){
-    if (process.env.NODE_ENV =='development'){
-      console.log('App is created');
-    }
-  }
-
-  initState = () => {
-    this.setState({
-      selectedMovie: null,
-    })
-  }
-
-  onMovieClick = (movie) => ()=>{
-    this.setState({
-      selectedMovie: movie,
-    })
-  }
-
-  render() {
-    const selectedMovie = this.state.selectedMovie;
-    const appName = this.props.name;
+const App = (props) => {
     return (
       <div className="App">
-        {selectedMovie
-          ? <MoviePage name={appName} movie={selectedMovie} getData={getData} onReturn={this.initState}/>
-          : <SearchPage name={appName} getData={getData} onReturn={this.onMovieClick}/>}
-        <AppFooter name={appName}/>
+        {props.movie
+          ? <MoviePage/>
+          : <SearchPage/>}
+        <AppFooter/>
       </div>
     );
-  }
 }
+
+function mapStateToProps(state){
+  const {movie} = state;
+  return {movie: movie};
+}
+
+export default connect(mapStateToProps)(App)

@@ -1,151 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MoviePage /> should render as expect 1`] = `
-<MoviePage
-  getData={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          Object {
-            "search": "testGenre",
-            "searchBy": "genres",
-            "sortBy": "release_date",
-          },
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": Promise {
-            "inspect": [Function],
-            "promiseDispatch": [Function],
-            "valueOf": [Function],
-          },
-        },
-      ],
-    }
-  }
-  movie={
-    Object {
-      "genres": "testGenre",
-      "id": 1,
-      "title": "movie1",
-    }
-  }
-  name="test"
-  onReturn={[MockFunction]}
+<div
+  className="page"
 >
-  <div
-    className="page"
-  >
-    <Header
-      name="test"
-    >
-      <div
-        className="app-header"
-      >
-        <div
-          className="header-name"
-        >
-          test
-        </div>
-        <Button
-          className="search-button"
-          name="SEARCH"
-          onClick={[MockFunction]}
-        >
-          <button
-            className="btn search-button"
-            name="SEARCH"
-            onClick={[MockFunction]}
-            type="button"
-          >
-            SEARCH
-          </button>
-        </Button>
-        <MovieDetail
-          movie={
+  <Connect(Header)>
+    <Button
+      className="search-button"
+      name="SEARCH"
+      onClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "preventDefault": [Function],
+              },
+            ],
+          ],
+          "results": Array [
             Object {
-              "genres": "testGenre",
-              "id": 1,
-              "title": "movie1",
-            }
-          }
-        >
-          <div
-            className="movie-detail"
-          >
-            <div
-              className="movie-detail-img-box"
-            >
-              <img
-                className="movie-detail-img"
-              />
-            </div>
-            <div
-              className="movie-detail-info"
-            >
-              <div
-                className="movie-detail-group"
-              >
-                <div
-                  className="movie-detail-title"
-                >
-                  movie1
-                </div>
-                <div
-                  className="movie-detail-rating"
-                />
-              </div>
-              <div
-                className="movie-detail-group"
-              >
-                <div
-                  className="movie-detail-release-date"
-                >
-                  NaN
-                </div>
-                <div
-                  className="movie-detail-duration"
-                />
-              </div>
-              <div
-                className="movie-detail-group"
-              >
-                <div
-                  className="movie-detail-description"
-                />
-              </div>
-            </div>
-          </div>
-        </MovieDetail>
-        <FilmsByGenre
-          genres="testGenre"
-        >
-          <div
-            className="films-by-genre"
-          >
-            <div
-              className="films-by-genre-text"
-            >
-              Films by testGenre genre
-            </div>
-          </div>
-        </FilmsByGenre>
-      </div>
-    </Header>
-    <ErrorBoundary
-      className="global-error"
-    >
-      <MovieList
-        movies={Array []}
-        onClick={[Function]}
-      >
-        <ul
-          className="movie-list-container"
-        />
-      </MovieList>
-    </ErrorBoundary>
-  </div>
-</MoviePage>
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+    />
+    <Connect(MovieDetail) />
+    <Connect(FilmsByGenre) />
+  </Connect(Header)>
+  <ErrorBoundary
+    className="global-error"
+  >
+    <Connect(MovieList) />
+  </ErrorBoundary>
+</div>
 `;

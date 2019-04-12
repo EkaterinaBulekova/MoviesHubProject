@@ -1,13 +1,19 @@
+import {connect} from "react-redux";
 import React from "react";
 
-export class AppFooter extends React.PureComponent {
-  render() {
-    return (
-      <footer className="app-footer">
-        <div className="app-footer-name">
-            {this.props.name}
-        </div>
-      </footer>
-    )
-  }
+const AppFooter = (props) => {
+  return (
+    <footer className="app-footer">
+      <div className="app-footer-name">
+          {props.name}
+      </div>
+    </footer>
+  )
 }
+
+function mapStateToProps(state){
+  const {name} = state;
+  return {name: name};
+}
+
+export default connect(mapStateToProps)(AppFooter)

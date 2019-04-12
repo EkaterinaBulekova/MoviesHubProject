@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<App /> should render as expect 1`] = `
-<div
-  className="App"
->
-  <SearchPage
-    getData={Object {}}
-    name="test"
-    onReturn={[Function]}
-  />
-  <AppFooter
-    name="test"
-  />
-</div>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;
