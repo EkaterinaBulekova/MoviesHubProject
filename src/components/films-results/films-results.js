@@ -1,7 +1,9 @@
 import React from "react";
+import {connect} from "react-redux";
 import ButtonsGroup from "../buttons-group/buttons-group";
+import { setSortBy } from "../../actions";
 
-export default function FilmsResults({count, sortBy, onClick}) {
+const FilmsResults = (props) => {
   const group ={
     className: "films-sortby",
     title: "Sort by",
@@ -19,13 +21,26 @@ export default function FilmsResults({count, sortBy, onClick}) {
   return(
     <div className = "films-results">
       {
-        (count)
+        (props.count)
         ? <React.Fragment>
-            <div className="films-count">{count + " movies found"}</div>
-            <ButtonsGroup group={group} active={sortBy} onClick={onClick}></ButtonsGroup>
+            <div className="films-count">{props.count + " movies found"}</div>
+            <ButtonsGroup group={group} active={props.sortBy} onClick={props.onClick}></ButtonsGroup>
           </React.Fragment>
         : null
       }
     </div>
   );
 }
+
+function mapStateToProps(state){
+  const {movies, filter} = state;
+  return {count: movies.length, sortBy: filter.sortBy};
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    onClick: (sortBy) => () => dispatch(setSortBy(sortBy)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilmsResults)

@@ -1,25 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {act} from 'react-dom/test-utils';
-import { Header } from './header';
+import Header from './header';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
-let container;
+describe('<Header />', () => {
+  it('should render header', () => {
+    const component = shallow(<Header/>);
+    expect(toJson(component)).toMatchSnapshot();
+  });
 
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  document.body.removeChild(container);
-  container = null;
-});
-
-it('can render with name', () => {
-    var testName = "Test name of app"
-    act(() => {
-      ReactDOM.render(<Header name={testName} />, container);
-    });
-    const header = container.querySelector('.app-header .header-name');
-    expect(header.textContent).toBe(testName);
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchPage /> should render as expect 1`] = `
+exports[`<MovieList /> should render list of movie card with right title, class and metod 1`] = `
 <ContextConsumer>
   <Component />
 </ContextConsumer>

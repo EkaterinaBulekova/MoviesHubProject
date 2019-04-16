@@ -7,6 +7,7 @@ export default function getQueryUrl({search, searchBy, sortBy}){
     resultUrl += 'search=' + search + '&' + 'searchBy=' + searchBy;
   }
   resultUrl += '&sortBy=' + sortBy + '&sortOrder=desc';
+  console.log(resultUrl);
   return resultUrl;
 }
 

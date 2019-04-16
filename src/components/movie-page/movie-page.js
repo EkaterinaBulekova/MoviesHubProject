@@ -1,47 +1,52 @@
 import React from "react";
-import { Header } from "../header/header";
+import {connect} from "react-redux";
+import Header from "../header/header";
 import MovieDetail from "../movie-detail/movie-detail";
 import Button from "../button/button";
 import { ErrorBoundary } from "../error-boundary/error-boundary";
 import FilmsByGenre from '../films-by-genre/films-by-genre';
 import MovieList from "../movie-list/movie-list";
+import * as actions from "../../actions";
 
 export class MoviePage extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      movie: this.props.movie,
-      movies: []
-    };
-  }
-
   componentDidMount(){
-    this.getMoviesByGenre(this.props.movie);
+    this.props.getMoviesByGenre({search:this.props.movie.genres, searchBy:'genres', sortBy:'release_date'});
   }
 
-  getMoviesByGenre(movie){
-    return this.props.getData({search:movie.genres, searchBy:'genres', sortBy:'release_date'})
-      .then(result => this.setState({movie: movie, movies: result.data}));
-  }
-
-  onMovieClick = (movie) =>()=>{
-    (movie.id !== this.state.movie.id) && this.getMoviesByGenre(movie);
+  shouldComponentUpdate(nextProps){
+    if(nextProps.movie && nextProps.movie.id !== this.props.movie.id){
+      this.props.getMoviesByGenre({search:nextProps.movie.genres, searchBy:'genres', sortBy:'release_date'});
+      return false;
+    }
+    return true;
   }
 
   render(){
-    const {movie, movies} = this.state;
     return (
       <div className="page">
-        <Header name={this.props.name}>
-          <Button className="search-button" name="SEARCH" onClick={this.props.onReturn}/>
-          <MovieDetail movie={movie}/>
-          <FilmsByGenre genres={movie.genres}/>
+        <Header>
+          <Button className="search-button" name="SEARCH" onClick={this.props.initMovie}/>
+          <MovieDetail/>
+          <FilmsByGenre/>
         </Header>
         <ErrorBoundary className="global-error">
-          <MovieList movies={movies.filter(curmovie => curmovie.id !== movie.id)} onClick={this.onMovieClick}/>
+          <MovieList/>
         </ErrorBoundary>
       </div>
     );
   }
 }
 
+function mapStateToProps(state){
+  const {movie} = state;
+  return {movie: movie};
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    getMoviesByGenre: (filter) => dispatch(actions.fetchFilteredMovies(filter)),
+    initMovie: () => dispatch(actions.setMovie(null))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage)
