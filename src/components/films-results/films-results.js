@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import ButtonsGroup from "../buttons-group/buttons-group";
-import { setSortBy } from "../../actions/insdex";
+import { setSortBy } from "../../actions";
 
 const FilmsResults = (props) => {
   const group ={

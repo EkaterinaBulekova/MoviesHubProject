@@ -6,7 +6,7 @@ import Button from "../button/button";
 import { ErrorBoundary } from "../error-boundary/error-boundary";
 import FilmsByGenre from '../films-by-genre/films-by-genre';
 import MovieList from "../movie-list/movie-list";
-import { fetchFilteredMovies, setMovie } from "../../actions/insdex";
+import * as actions from "../../actions";
 
 export class MoviePage extends React.Component{
   componentDidMount(){
@@ -44,8 +44,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    getMoviesByGenre: (filter) => dispatch(fetchFilteredMovies(filter)),
-    initMovie: () => dispatch(setMovie(null))
+    getMoviesByGenre: (filter) => dispatch(actions.fetchFilteredMovies(filter)),
+    initMovie: () => dispatch(actions.setMovie(null))
   }
 }
 

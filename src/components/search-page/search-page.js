@@ -6,7 +6,7 @@ import { ErrorBoundary } from "../error-boundary/error-boundary";
 import FilmsResults from '../films-results/films-results';
 import MovieList from "../movie-list/movie-list";
 import Message from "../message/message";
-import { fetchFilteredMovies, setMovies } from '../../actions/insdex';
+import * as actions from "../../actions";
 
 export class SearchPage extends React.Component{
 
@@ -50,8 +50,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    startSearch: (filter) => dispatch(fetchFilteredMovies(filter)),
-    initMovies: () => dispatch(setMovies([]))
+    startSearch: (filter) => dispatch(actions.fetchFilteredMovies(filter)),
+    initMovies: () => dispatch(actions.setMovies([]))
   }
 }
 

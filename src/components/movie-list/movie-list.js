@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Movie from '../movie/movie';
-import { setMovie } from '../../actions/insdex';
+import { setMovie } from '../../actions';
 
 const MovieList = (props) =>{
   const movieElements = props.movies.map((curmovie) =>

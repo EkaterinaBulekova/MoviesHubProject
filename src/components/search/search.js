@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Button from "../button/button";
 import CustomInput from "../custom-input/custom-input";
-import { setSearch } from "../../actions/insdex";
+import { setSearch } from "../../actions";
 import SearchFilter from "../search-filter/search-filter";
 
 

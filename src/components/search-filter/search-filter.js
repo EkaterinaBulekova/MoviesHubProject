@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import ButtonsGroup from '../buttons-group/buttons-group';
-import { setSearchBy } from '../../actions/insdex';
+import { setSearchBy } from '../../actions';
 
 const SearchFilter = (props) => {
   const group = {
