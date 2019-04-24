@@ -9,6 +9,7 @@
 @import "./components/films-by-genre/film-by-genre.css";
 @import "./components/films-results/films-results.css";
 @import "./components/error-boundary/error-boundary.css";
+@import "./components/not-found/not-found.css";
 
 * {
     padding: 0;

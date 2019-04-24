@@ -28,6 +28,6 @@ module.exports =  merge (common, {
 
     devServer: {
       contentBase: './dist-dev',
-      hot: true
+      //hot: true
     }
   });

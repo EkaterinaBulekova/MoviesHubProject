@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from "react-redux";
 
 const MovieDetail = (props) =>{
-  return (
-   <div className="movie-detail">
+  return props.movie ? (
+       <div className="movie-detail">
       <div className="movie-detail-img-box">
         <img className="movie-detail-img" src={props.movie.poster_path}></img>
       </div>
@@ -21,7 +21,7 @@ const MovieDetail = (props) =>{
         </div>
       </div>
     </div>
-  )
+  ): null
 }
 
 function mapStateToProps(state){

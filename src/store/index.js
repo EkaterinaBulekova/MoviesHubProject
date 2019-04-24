@@ -1,20 +1,12 @@
-import { createStore, applyMiddleware } from "redux";
+import { createHashHistory} from 'history'
+import { applyMiddleware, compose, createStore } from 'redux'
+import { routerMiddleware } from 'connected-react-router'
 import thunk from "redux-thunk";
 import rootReducer from "../reducers";
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
- 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
- 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+export const history = createHashHistory();
 const initState = {
-  name: 'netflixroulette'
+  name: 'netflixroulette',
 } 
-export default () => {
-  let store = createStore(persistedReducer, initState, applyMiddleware(thunk))
-  let persistor = persistStore(store)
-  return { store, persistor }
-}
+
+export const store = createStore(rootReducer(history), initState, compose(applyMiddleware(routerMiddleware(history), thunk)))

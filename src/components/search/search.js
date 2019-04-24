@@ -2,14 +2,14 @@ import React from "react";
 import {connect} from "react-redux";
 import Button from "../button/button";
 import CustomInput from "../custom-input/custom-input";
-import { setSearch } from "../../actions";
 import SearchFilter from "../search-filter/search-filter";
+import { push } from 'connected-react-router'
 
 
-class Search extends React.PureComponent {
+class Search extends React.Component {
   onSubmit =(e) => {
     e.preventDefault();
-    this.props.setSearch(e.target[0].value);
+    this.props.setPath(e.target[0].value ? "/search/" + e.target[0].value : "/");
   }
 
   render() {
@@ -30,7 +30,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    setSearch: (search) => dispatch(setSearch(search)),
+    setPath: (search) => dispatch(push(search)),
   }
 }
 

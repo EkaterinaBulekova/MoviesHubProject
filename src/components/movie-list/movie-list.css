@@ -1,13 +1,19 @@
 .movie-list-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    color:  #4e4848;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  color:  #4e4848;
 }
 
+.movie-list-container a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+
 .movie-list-element {
-    cursor: pointer;
-    flex: 0 1 25%;
-    margin: 4%;
+  cursor: pointer;
+  flex: 0 1 25%;
+  margin: 4%;
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Movie from '../movie/movie';
-import { setMovie } from '../../actions';
+import { push } from 'connected-react-router'
 
 const MovieList = (props) =>{
   const movieElements = props.movies.map((curmovie) =>
     <li key = {curmovie.id} className="movie-list-element">
-      <Movie movie = {curmovie} onClick = {props.onClick(curmovie)}/>
+        <Movie movie = {curmovie} onClick = {props.onClick(curmovie)}/>
     </li>)
   return (
     <ul className="movie-list-container">
@@ -22,7 +22,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    onClick: (movie) => () => dispatch(setMovie(movie)),
+    onClick: (movie) => () => dispatch(push("/film/"+movie.id)),
   }
 }
 
