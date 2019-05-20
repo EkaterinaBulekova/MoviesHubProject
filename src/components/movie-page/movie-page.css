@@ -1,0 +1,14 @@
+.search_button{
+    flex: 0 1 25%;
+    margin: 1em 5%;
+    max-width: 7em;
+    max-height: 3em;
+    min-width: 7em;
+    min-height: 3em;
+    color:#ce5d6e;
+    font-size: 100%;
+    background-color: white;
+    border: 0;
+    border-radius: 3px;
+    font-weight: bold;
+  }

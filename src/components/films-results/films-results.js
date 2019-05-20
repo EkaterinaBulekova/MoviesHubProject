@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import ButtonsGroup from "../buttons-group/buttons-group";
+import Button from "../button/button";
 import { setSortBy } from "../../actions";
+import styles from "./films-results.css";
 
 const FilmsResults = (props) => {
   const group ={
@@ -19,12 +20,21 @@ const FilmsResults = (props) => {
   }
 
   return(
-    <div className = "films-results">
+    <div className = {styles.films_results}>
       {
         (props.count)
         ? <React.Fragment>
-            <div className="films-count">{props.count + " movies found"}</div>
-            <ButtonsGroup group={group} active={props.sortBy} onClick={props.onClick}></ButtonsGroup>
+            <div className={styles.films_count}>{props.count + " movies found"}</div>
+            <div className={styles.films_sortby}>
+              <div className={styles.films_sortby_title}>{group.title}</div>
+                {group.buttons.map((button)=>
+                  <Button key={button.result} 
+                    className={(button.result===props.sortBy) 
+                      ? (styles.films_sortby_button_active) 
+                      : (styles.films_sortby_button)} 
+                    name={button.name} onClick={props.onClick(button.result)}>
+                  </Button>)}
+            </div>
           </React.Fragment>
         : null
       }

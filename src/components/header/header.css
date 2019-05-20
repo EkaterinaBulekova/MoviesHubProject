@@ -1,4 +1,4 @@
-.app-header{
+.header{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -11,7 +11,7 @@
     background-blend-mode: overlay;
     color: #ce5d6e;
 }
-.header-name{
+.name{
     flex: 0 1 70%;
     min-height: 3em;
     font-weight: bold;

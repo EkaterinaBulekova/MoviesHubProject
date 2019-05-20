@@ -3,7 +3,8 @@ import {connect} from "react-redux";
 import Button from "../button/button";
 import CustomInput from "../custom-input/custom-input";
 import SearchFilter from "../search-filter/search-filter";
-import { push } from 'connected-react-router'
+import { push } from 'connected-react-router';
+import styles from './search.css';
 
 
 class Search extends React.Component {
@@ -14,10 +15,10 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form  className="search-component" onSubmit={this.onSubmit}>
-        <CustomInput className="search-field" title="FIND YOUR MOVIE" value={this.props.search}/>
+      <form  className={styles.search_component} onSubmit={this.onSubmit}>
+        <CustomInput title="FIND YOUR MOVIE" value={this.props.search}/>
         <SearchFilter/>
-        <Button className="search-button active" type="submit" name="SEARCH"/>
+        <Button className={styles.search_button_active} type="submit" name="SEARCH"/>
       </form>
     )
   }

@@ -1,7 +1,7 @@
-.global-error{
+.global_error{
     width: 100%;
 }
 
-.global-error h2{
+.global_error_title{
     margin: 3em auto;
 }

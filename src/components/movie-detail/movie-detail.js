@@ -1,23 +1,24 @@
 import React from 'react';
 import {connect} from "react-redux";
+import styles from "./movie-detail.css";
 
 const MovieDetail = (props) =>{
   return props.movie ? (
-       <div className="movie-detail">
-      <div className="movie-detail-img-box">
-        <img className="movie-detail-img" src={props.movie.poster_path}></img>
+       <div className={styles.movie_detail}>
+      <div className={styles.movie_detail_img_box}>
+        <img className={styles.movie_detail_img} src={props.movie.poster_path}></img>
       </div>
-      <div className="movie-detail-info">
-        <div className="movie-detail-group">
-          <div className="movie-detail-title">{props.movie.title}</div>
-          <div className="movie-detail-rating">{props.movie.vote_average}</div>
+      <div className={styles.movie_detail_info}>
+        <div className={styles.movie_detail_group}>
+          <div className={styles.movie_detail_title}>{props.movie.title}</div>
+          <div className={styles.movie_detail_rating}>{props.movie.vote_average}</div>
         </div>        
-        <div className="movie-detail-group">
-          <div className="movie-detail-release-date">{(new Date(props.movie.release_date)).getFullYear().toString()}</div>
-          <div className="movie-detail-duration">{props.movie.runtime && props.movie.runtime + " min"}</div>
+        <div className={styles.movie_detail_group}>
+          <div className={styles.movie_detail_release_date}>{(new Date(props.movie.release_date)).getFullYear().toString()}</div>
+          <div className={styles.movie_detail_duration}>{props.movie.runtime && props.movie.runtime + " min"}</div>
         </div>
-        <div className="movie-detail-group">
-          <div className="movie-detail-description">{props.movie.overview}</div>
+        <div className={styles.movie_detail_group}>
+          <div className={styles.movie_detail_description}>{props.movie.overview}</div>
         </div>
       </div>
     </div>

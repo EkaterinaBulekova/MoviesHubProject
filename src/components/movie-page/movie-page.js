@@ -8,9 +8,8 @@ import { ErrorBoundary } from "../error-boundary/error-boundary";
 import FilmsByGenre from '../films-by-genre/films-by-genre';
 import MovieList from "../movie-list/movie-list";
 import * as actions from "../../actions";
-import { push } from 'connected-react-router'
-
-
+import { push } from 'connected-react-router';
+import styles from "./movie-page.css"
 
 export class MoviePage extends React.Component{
   componentDidMount(){
@@ -40,7 +39,7 @@ export class MoviePage extends React.Component{
         {
           this.props.movie &&
         <Header>
-          <Button className="search-button" name="SEARCH" onClick={this.onSearchClick}/>
+          <Button className={styles.search_button} name="SEARCH" onClick={this.onSearchClick}/>
           <MovieDetail/>
           <FilmsByGenre/>
         </Header>

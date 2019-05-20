@@ -1,4 +1,4 @@
-.films-by-genre{
+.films_by_genre{
     width: 100%;
     padding: 1em 0;
     background-color: #f5f3f3;
@@ -6,6 +6,6 @@
     font-weight: bold;
 }
 
-.films-by-genre-text{
+.films_by_genre_text{
     margin: 0 5%;
 }

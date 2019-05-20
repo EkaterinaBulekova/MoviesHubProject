@@ -1,15 +1,16 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Movie from '../movie/movie';
-import { push } from 'connected-react-router'
+import { push } from 'connected-react-router';
+import styles from "./movie-list.css";
 
 const MovieList = (props) =>{
   const movieElements = props.movies.map((curmovie) =>
-    <li key = {curmovie.id} className="movie-list-element">
+    <li key = {curmovie.id} className={styles.movie_list_element}>
         <Movie movie = {curmovie} onClick = {props.onClick(curmovie)}/>
     </li>)
   return (
-    <ul className="movie-list-container">
+    <ul className={styles.movie_list_container}>
       {movieElements}
     </ul>
   )

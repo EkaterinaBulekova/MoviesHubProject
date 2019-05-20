@@ -1,9 +1,10 @@
-import React from "react"
+import React from "react";
+import styles from "./not-found.css";
 
 const NotFound = () => {
   return (
-  <div className="not-found">
-    <h1 className="not-found-text">Sorry... Not found!</h1>
+  <div>
+    <h1 className={styles.not_found_text}>Sorry... Not found!</h1>
   </div>)
 }
 

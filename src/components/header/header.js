@@ -1,10 +1,12 @@
 import {connect} from "react-redux";
-import React from "react"
+import React from "react";
+import styles from "./header.css";
+
 
 const Header = (props) => {
   return (
-  <div className="app-header">
-    <div className="header-name">
+  <div className={styles.header}>
+    <div className={styles.name}>
       {props.name}
     </div>
     {props.children}
